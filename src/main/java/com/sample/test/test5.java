@@ -1,0 +1,42 @@
+package com.sample.test;
+
+
+import java.util.Arrays;
+
+public class test5 {
+	
+	public static void main(String[] args) throws Exception {
+		
+		test5 fetcher = new test5();
+		
+		fetcher.run();
+	}
+	private void run() throws Exception {
+
+		
+		try {
+			int[] array = {1, 5, 2, 6, 3, 7, 4};
+			int[][] commands = {{2, 5, 3}, {4, 4, 1}, {1, 7, 3}};
+
+			int[] result = solution(array,commands);
+			System.out.println("result  :"+result);
+
+		} catch (Exception e) {
+			System.out.println("======= 에러 ======="+e.getMessage());
+
+		}
+	}
+
+	public int[] solution(int[] array, int[][] commands) {
+
+		int[] answer = new int[commands.length];
+
+		for(int i=0; i<commands.length; i++){
+			int[] temp = Arrays.copyOfRange(array, commands[i][0]-1, commands[i][1]);
+			Arrays.sort(temp);
+			answer[i] = temp[commands[i][2]-1];
+		}
+
+			return answer;
+	}
+}
